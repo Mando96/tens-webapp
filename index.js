@@ -3,7 +3,13 @@ const cardObjectDefinitions = [
     {id:1, imagePath:'/images/card-KingHearts.png'},
     {id:2, imagePath:'/images/card-JackClubs.png'},
     {id:3, imagePath:'/images/card-QueenDiamonds.png'},
-    {id:4, imagePath:'/images/card-AceSpades.png'}
+    {id:4, imagePath:'/images/card-AceSpades.png'},
+    //{id:5, imagePath:'/images/card-AceSpades.png'},
+   //{id:6, imagePath:'/images/card-AceSpades.png'},
+    //{id:7, imagePath:'/images/card-AceSpades.png'},
+   // {id:8, imagePath:'/images/card-AceSpades.png'},
+    //{id:9, imagePath:'/images/card-AceSpades.png'}
+
 ]
 const aceId = 4
 
@@ -15,7 +21,7 @@ const playGameButtonElem = document.getElementById('playGame')
 
 const cardContainerElem = document.querySelector('.card-container')
 
-const collapsedGridAreaTemplate = '"a a" "a a"'
+const collapsedGridAreaTemplate = '"a a" "a a" "a a"'
 const cardCollectionCellClass = ".card-pos-a"
 
 const numCards = cardObjectDefinitions.length

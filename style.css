@@ -6,7 +6,7 @@
     --card-width-sm:120px;
     --card-height-sm:168px;
 
-    --num-cards:4;
+    --num-cards:9;
 
     --card-horizontal-space-lg: 100px;
     --card-horizontal-space-sm: 50px;
@@ -32,18 +32,19 @@ main{
 .card-container{
     position: relative;
     height:100%;
-    width:calc(var(--card-width-lg) * (var(--num-cards) / 2) + var(--card-horizontal-space-lg));
+    width:calc(var(--card-width-lg) * (var(--num-cards)/2) + var(--card-horizontal-space-lg));
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-template-areas: "a b"
-                         "c d";
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas: "a e c"
+                         "g b f"
+                         "d h i";
 
 }
 
 .card-pos-a{
     grid-area: a;
-    /* background-color: gray; */
+    background-color: gray; 
 }
 .card-pos-b{
     grid-area: b;
@@ -57,7 +58,27 @@ main{
     grid-area: d;
     /* background-color: darkcyan; */
 }
-.card-pos-a, .card-pos-b,.card-pos-c,.card-pos-d{
+.card-pos-e{
+    grid-area: e;
+    background-color: darkcyan;
+}
+.card-pos-f{
+    grid-area: f;
+    background-color: rosybrown;
+}
+.card-pos-g{
+    grid-area: g;
+    background-color: goldenrod;
+}
+.card-pos-h{
+    grid-area: h;
+    background-color: rgb(167, 217, 217);
+}
+.card-pos-i{
+    grid-area: i;
+    background-color: rgb(244, 239, 175);
+}
+.card-pos-a, .card-pos-b,.card-pos-c,.card-pos-d,.card-pos-e,.card-pos-f,.card-pos-g,.card-pos-h,.card-pos-h{
     display:flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +119,7 @@ main{
 header{
     display: flex;
     flex-direction: column;
-    margin-bottom:10px;
+    margin-bottom:20px;
 }
 .header-title-container{
     display: flex;
@@ -156,7 +177,7 @@ header{
   border: 2px solid #1A1A1A;
   border-radius: 15px;
   box-sizing: border-box;
-  color: #3B3B3B;
+  color: /*#3B3B3B*/green;
   cursor: pointer;
   display: none;
   font-family: var(--primary-font);

@@ -21,25 +21,25 @@ const btnEle = document.querySelector(".btn")
 
 let playerDeck, alphaDeck, computerDeck, inRound, stop
 
-btnEle.addEventListener("click", doit)
-
-function doit() {
-
-    if (stop) {
-      startGame()
-      return
-    }
-
-    /*if (inRound) {
-  cleanBeforeRound()
-} else {
-  flipCards()
-}*/
-}
-doit()
+//btnEle.addEventListener("click", doit)
 
 
-//startGame()
+
+
+btnEle.addEventListener("click", () => {
+  if (stop) {
+    startGame()
+    return
+  }
+
+  if (inRound) {
+    cleanBeforeRound()
+  } else {
+    flipCards()
+  }
+})
+
+startGame()
 function startGame() {
   const deck = new Deck()
   deck.shuffle()
@@ -65,17 +65,20 @@ function cleanBeforeRound() {
   updateDeckCount()
 }
 
-flipCards()
-function flipCards(){
+
+function flipCards() {
   inRound = true
 
+  const btnEle1 = document.querySelector(".btn1")
+  const btnEle2 = document.querySelector(".btn2")
   const playerCard = playerDeck.pop()
   const computerCard = computerDeck.pop()
   const alphaCard = []
   const alphaDeckCount = alphaDeck.numberOfCards + 2
 
-  playerCardSlot.appendChild(playerCard.getHTML())
-  computerCardSlot.appendChild(computerCard.getHTML())
+  btnEle1.addEventListener("click", () => { playerCardSlot.appendChild(playerCard.getHTML()) })
+  btnEle2.addEventListener("click", () => { computerCardSlot.appendChild(computerCard.getHTML()) })
+
   //alphaCardSlot.appendChild(alphaCard.getHTML())
 
   if (isRoundWinner(playerCard, computerCard, alphaCard)) {

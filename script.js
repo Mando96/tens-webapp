@@ -1,4 +1,3 @@
-
 import Deck from "./deck.js"
 
 const CARD_VALUE_MAP = { 
@@ -21,12 +20,9 @@ const btnEle = document.querySelector(".btn")
 
 let playerDeck, alphaDeck, computerDeck, inRound, stop
 
-//btnEle.addEventListener("click", doit)
+function gameon() {
 
-
-
-
-btnEle.addEventListener("click", () => {
+document.addEventListener("click", () => {
   if (stop) {
     startGame()
     return
@@ -65,7 +61,6 @@ function cleanBeforeRound() {
   updateDeckCount()
 }
 
-
 function flipCards() {
   inRound = true
 
@@ -76,9 +71,11 @@ function flipCards() {
   const alphaCard = []
   const alphaDeckCount = alphaDeck.numberOfCards + 2
 
-  btnEle1.addEventListener("click", () => { playerCardSlot.appendChild(playerCard.getHTML()) })
-  btnEle2.addEventListener("click", () => { computerCardSlot.appendChild(computerCard.getHTML()) })
+ // btnEle1.addEventListener("click", () => { playerCardSlot.appendChild(playerCard.getHTML()) })
+  //btnEle2.addEventListener("click", () => { computerCardSlot.appendChild(computerCard.getHTML())})
 
+  computerCardSlot.appendChild(computerCard.getHTML())
+  playerCardSlot.appendChild(playerCard.getHTML())
   //alphaCardSlot.appendChild(alphaCard.getHTML())
 
   if (isRoundWinner(playerCard, computerCard, alphaCard)) {
@@ -140,3 +137,8 @@ function isRoundWinner(cardOne, cardTwo) {
 function isGameOver(deck) {
   return deck.numberOfCards === 0
 }
+}
+
+btnEle.addEventListener("click", () => {
+  gameon()
+})

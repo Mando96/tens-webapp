@@ -1,6 +1,6 @@
 import Deck from "./deck.js"
 
-const btnEle = document.querySelector(".btn")
+const startbtn = document.querySelector(".start-btn")
 
 function gameon() {
 
@@ -21,12 +21,12 @@ function gameon() {
   const alphaDeckElement = document.querySelector(".alpha-deck")
   const text = document.querySelector(".text")
   const thetime = 500
-  const btnEle3 = document.querySelector(".btn3")
+  const playbtn = document.querySelector(".play-btn")
 
   let playerDeck, alphaDeck, computerDeck, inRound, stop
 
 
-  btnEle3.addEventListener("click", () => {
+  playbtn.addEventListener("click", () => {
     if (stop) {
       realone()
       return
@@ -37,6 +37,8 @@ function gameon() {
       console.log("Sex")
     } else {
       flip()
+      moveImage2()
+      
     }
   })
 
@@ -76,8 +78,8 @@ function gameon() {
     const playerCard = playerDeck.pop()
     const alphaCard = []
     const alphaDeckCount = alphaDeck.numberOfCards + 2
-
-    console.log()
+    const tensbtn = document.querySelector(".tens-btn")
+    let win
 
     updateDeckCount()
 
@@ -85,9 +87,9 @@ function gameon() {
 
     setTimeout(function () {
       computerCardSlot.appendChild(computerCard.getHTML())
-      const win = document.querySelector(".btn5")
+      moveImage1()
 
-      if (isRoundWinner(playerCard, computerCard, alphaCard)) {
+      /*if (isRoundWinner(playerCard, computerCard, alphaCard)) {
         text.innerText = "You Rock!!😗"
         alphaDeck.push(computerCard)
         alphaDeck.push(playerCard)
@@ -95,16 +97,42 @@ function gameon() {
         text.innerText = "Stale"
         alphaDeck.push(computerCard)
         alphaDeck.push(playerCard)
+      }*/
+
+      if (isRoundWinner(playerCard, computerCard, alphaCard, win)){
+        win = true
+        console.log(win)
+      }
+      else
+      {
+        win = false
+        console.log(win)
       }
 
-     /* win.addEventListener("click", () => {
+      tensbtn.addEventListener("click", () => {
+        if (win) {
+          if (isRoundWinner( playerCard, computerCard, alphaCard)) {
+            text.innerText = "Nailed it 🤩"
+            for (let i = 0; i < alphaDeckCount; i++) {
+              playerDeck.push(alphaCard)
+              alphaDeck.pop(alphaCard)
+            }
+          }
+        } else {
+          text.innerText = "Nice Try 🧐"
+          //alphaDeck.push(computerCard)
+          //alphaDeck.push(playerCard)
+        }
+      })
 
       if (isRoundWinner( playerCard, computerCard, alphaCard)) {
         text.innerText = "Win"
-        for (let i = 0; i < alphaDeckCount; i++) {
+        alphaDeck.push(computerCard)
+        alphaDeck.push(playerCard)
+       /* for (let i = 0; i < alphaDeckCount; i++) {
           playerDeck.push(alphaCard)
           alphaDeck.pop(alphaCard)
-        }
+        }*/
       }
       else if (isRoundWinner(computerCard, playerCard, alphaCard)) {
         text.innerText = "Lose"
@@ -118,8 +146,6 @@ function gameon() {
         alphaDeck.push(computerCard)
         alphaDeck.push(playerCard)
       }
-
-      })*/
 
     }, thetime)
     
@@ -167,8 +193,19 @@ function gameon() {
     return deck.numberOfCards === 0
   }
 
+  
+  function moveImage1() {
+    var image = document.getElementById("item1");
+    image.classList.add("turn");
+
+  }
+  function moveImage2() {
+    var image = document.getElementById("item2");
+    image.classList.add("turn");
+  }
+
 }
 
-btnEle.addEventListener("click", () => {
+startbtn.addEventListener("click", () => {
   gameon()
 })
